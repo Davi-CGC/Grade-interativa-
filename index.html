@@ -1,249 +1,201 @@
 <!DOCTYPE html>
-<!-- Declara o documento como HTML5 -->
-
+<!-- Define o documento como HTML5 -->
 <html lang="pt-BR">
-<!-- Abre o HTML e define o idioma como português do Brasil -->
+<!-- Início do HTML e define o idioma como português do Brasil -->
 
 <head>
-<!-- Início do cabeçalho -->
-
   <meta charset="UTF-8" />
-  <!-- Define o padrão de caracteres (acentos, ç, etc) -->
+  <!-- Define o conjunto de caracteres para aceitar acentos -->
 
   <title>Células tela cheia</title>
-  <!-- Título que aparece na aba do navegador -->
+  <!-- Título da aba do navegador -->
 
   <style>
-
     *{
-    /* Seleciona TODOS os elementos da página */
       margin:0;
-      /* Remove margens padrão */
       padding:0;
-      /* Remove espaçamentos internos padrão */
       box-sizing:border-box;
-      /* Faz largura/altura incluírem borda e padding */
     }
+    /* Remove margens e paddings padrão e facilita o cálculo de tamanhos */
 
     body{
-    /* Estilo do corpo da página */
       width: 100vw;
-      /* Largura igual à largura da tela */
       height: 100vh;
-      /* Altura igual à altura da tela */
       overflow: hidden;
-      /* Esconde barras de rolagem */
       background: #f2f2f200;
-      /* Cor de fundo transparente */
       font-family: Arial, sans-serif;
-      /* Define a fonte */
     }
+    /* Faz o body ocupar a tela inteira e define a fonte */
 
     .area{
-    /* Container principal */
       width: 100vw;
-      /* Ocupa toda a largura da tela */
       height: 100vh;
-      /* Ocupa toda a altura da tela */
       display: grid;
-      /* Ativa o CSS Grid */
       grid-template-columns: 180px 1fr;
-      /* Duas colunas: uma fixa e uma flexível */
       grid-template-rows: 200px 1fr;
-      /* Duas linhas: uma fixa e uma flexível */
     }
+    /* Cria um grid de 2 colunas e 2 linhas ocupando a tela inteira */
 
     .celula{
-    /* Estilo base de cada célula */
       border: 1px solid rgba(0, 0, 0, 0);
-      /* Borda invisível */
       background: #f2f2f200;
-      /* Fundo transparente */
       overflow: hidden;
-      /* Esconde conteúdo que ultrapassar */
       display: flex;
-      /* Ativa flexbox */
       align-items: center;
-      /* Centraliza verticalmente */
       justify-content: center;
-      /* Centraliza horizontalmente */
     }
+    /* Estilo base de cada célula do grid */
 
+    /* tirar bordas duplas */
     .c1{
-    /* Estilo específico da célula 1 */
       border-right:0;
-      /* Remove borda direita */
       border-bottom:0;
-      /* Remove borda inferior */
     }
+    /* Remove bordas da célula 1 */
 
     .c2{
-    /* Estilo específico da célula 2 */
       padding-top:20px;
-      /* Espaço interno no topo */
     }
+    /* Dá um espaço no topo da célula 2 */
 
     .c3{
-    /* Estilo específico da célula 3 */
       border-right:0;
-      /* Remove borda direita */
     }
+    /* Remove a borda direita da célula 3 */
 
     .celula img,
-    /* Seleciona imagens dentro da célula */
     .celula video{
-    /* Seleciona vídeos dentro da célula */
       width: 100%;
-      /* Ocupa toda a largura */
       height: 100%;
-      /* Ocupa toda a altura */
       object-fit: cover;
-      /* Corta sem distorcer */
       display: block;
-      /* Remove espaços extras */
     }
+    /* Faz imagens e vídeos preencherem toda a célula */
 
+    /* lista na célula 3 */
     .lista{
-    /* Container da lista de botões */
       width: 100%;
-      /* Largura total */
       height: 100%;
-      /* Altura total */
       padding: 10px;
-      /* Espaçamento interno */
       overflow-y: auto;
-      /* Rolagem vertical */
       display: flex;
-      /* Flexbox */
       flex-direction: column;
-      /* Itens em coluna */
       gap: 8px;
-      /* Espaço entre botões */
       align-items: stretch;
-      /* Botões esticam na largura */
       justify-content: flex-start;
-      /* Alinha no topo */
     }
+    /* Container vertical com rolagem para os botões */
 
     .lista button{
-    /* Botões da lista */
       width: 100%;
-      /* Largura total */
       padding: 10px;
-      /* Espaço interno */
       border: 1px solid #00000000;
-      /* Borda invisível */
       background: rgba(255, 255, 255, 0);
-      /* Fundo transparente */
       cursor: pointer;
-      /* Cursor de clique */
       font-size: 14px;
-      /* Tamanho da fonte */
       text-align: left;
-      /* Texto alinhado à esquerda */
     }
+    /* Estilo padrão dos botões da lista */
 
     .lista button:hover{
-    /* Quando o mouse passa no botão */
       background: #dddddd00;
-      /* Cor de fundo (quase invisível) */
     }
+    /* Efeito ao passar o mouse nos botões */
 
+    /* wikipedia na célula 4 */
     iframe{
-    /* Todos os iframes */
       width: 100%;
-      /* Largura total */
       height: 100%;
-      /* Altura total */
       border: none;
-      /* Remove borda */
     }
-
+    /* Faz o iframe ocupar toda a célula */
   </style>
-  <!-- Fim do CSS -->
 </head>
-<!-- Fim do cabeçalho -->
 
 <body>
-<!-- Início do corpo -->
+  <!-- Corpo da página -->
 
   <div class="area">
-  <!-- Grid principal -->
+    <!-- Área principal em grid -->
 
     <div class="celula c1">
-    <!-- Célula 1 -->
+      <!-- Célula 1 -->
       <img src="L-logo.png" alt="meme">
-      <!-- Imagem exibida -->
+      <!-- Imagem exibida na célula 1 -->
     </div>
-    <!-- Fim da célula 1 -->
 
     <div class="celula c2">
-    <!-- Célula 2 -->
+      <!-- Célula 2 -->
       <iframe
-        src="https://open.spotify.com/embed/playlist/37i9dQZEVXbNG2KDcFcKOF"
+        data-testid="embed-iframe"
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/playlist/37i9dQZEVXbNG2KDcFcKOF?utm_source=generator&theme=0"
+        width="100%"
+        height="352"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy">
-        <!-- Carrega só quando necessário -->
       </iframe>
+      <!-- Player do Spotify -->
     </div>
-    <!-- Fim da célula 2 -->
 
+    <!-- CÉLULA 3: lista de pessoas -->
     <div class="celula c3">
-    <!-- Célula 3 -->
-      <div class="lista">
-      <!-- Lista de botões -->
+      <div class="lista" id="listaPessoas">
+        <!-- Lista de botões -->
 
-        <button onclick="abrirWiki('Albert_Einstein')">
-        <!-- Botão -->
-          Albert Einstein
-          <!-- Texto do botão -->
-        </button>
+        <button onclick="abrirWiki('Albert_Einstein')">Albert Einstein</button>
+        <button onclick="abrirWiki('Nikola_Tesla')">Nikola Tesla</button>
+        <button onclick="abrirWiki('Marie_Curie')">Marie Curie</button>
+        <button onclick="abrirWiki('Isaac_Newton')">Isaac Newton</button>
+        <button onclick="abrirWiki('Ada_Lovelace')">Ada Lovelace</button>
+        <button onclick="abrirWiki('Elon_Musk')">Elon Musk</button>
+        <button onclick="abrirWiki('Cristiano_Ronaldo')">Cristiano Ronaldo</button>
 
-        <button onclick="abrirForms()">
-        <!-- Botão do forms -->
+        <button
+          onclick="abrirForms()"
+          style="
+            width:100%;
+            padding:15px;
+            font-size:18px;
+            background:#ff4444;
+            color:white;
+            border:none;
+            cursor:pointer;
+            margin-top:20px;
+          ">
           Fale com nosco
-          <!-- Texto -->
         </button>
+        <!-- Botão que abre o Google Forms na célula 4 -->
 
       </div>
-      <!-- Fim da lista -->
     </div>
-    <!-- Fim da célula 3 -->
 
+    <!-- CÉLULA 4: página wikipedia / forms -->
     <div class="celula c4">
-    <!-- Célula 4 -->
-      <iframe id="wikiFrame">
-      <!-- Iframe que recebe conteúdo -->
+      <iframe
+        id="wikiFrame"
+        src="https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal">
       </iframe>
+      <!-- Iframe que recebe Wikipedia ou Google Forms -->
     </div>
-    <!-- Fim da célula 4 -->
 
   </div>
-  <!-- Fim da área -->
 
   <script>
-  <!-- Início do JavaScript -->
-
+    // Função que abre uma página da Wikipedia no iframe
     function abrirWiki(nome){
-    // Função que recebe o nome da página
-      document.getElementById("wikiFrame").src =
-      // Seleciona o iframe
-        "https://pt.wikipedia.org/wiki/" + nome;
-        // Define a URL
+      const url = "https://pt.wikipedia.org/wiki/" + nome;
+      document.getElementById("wikiFrame").src = url;
     }
 
+    // Função que abre o Google Forms no iframe
     function abrirForms(){
-    // Função do botão "Fale com nosco"
       document.getElementById("wikiFrame").src =
-      // Seleciona o iframe
         "https://forms.gle/GgxyrNvtRndYG2mk9";
-        // Define o link do Forms
     }
-
   </script>
-  <!-- Fim do JavaScript -->
 
 </body>
-<!-- Fim do corpo -->
-
 </html>
-<!-- Fim do HTML -->
