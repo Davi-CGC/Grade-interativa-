@@ -79,6 +79,35 @@
       height: 100%;
       border: none;
     }
+
+        /* SEU CSS ATUAL FICA IGUAL... */
+
+    /* + ADICIONE ISSO NO FINAL */
+    @media (max-width: 768px) { /* Celular retrato */
+      .area {
+        grid-template-columns: 1fr; /* Logo em cima */
+        grid-template-rows: 200px 1fr 250px 1fr; /* 4 linhas empilhadas */
+      }
+      
+      .c1, .c2, .c3, .c4 {
+        border-bottom: 1px solid rgba(0,0,0,0.1); /* linha entre células */
+      }
+      
+      .c2 iframe {
+        height: 100% !important; /* Spotify ocupa tudo */
+      }
+    }
+
+    @media (max-width: 480px) and (orientation: landscape) { /* Celular paisagem */
+      .area {
+        grid-template-rows: 150px 1fr 200px 1fr; /* menos altura no retrato */
+      }
+      
+      .lista {
+        padding: 5px; /* menos padding */
+      }
+    }
+
   </style>
 </head>
 
