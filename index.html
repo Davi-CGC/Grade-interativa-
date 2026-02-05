@@ -1,159 +1,249 @@
 <!DOCTYPE html>
+<!-- Declara o documento como HTML5 -->
+
 <html lang="pt-BR">
+<!-- Abre o HTML e define o idioma como português do Brasil -->
+
 <head>
+<!-- Início do cabeçalho -->
+
   <meta charset="UTF-8" />
+  <!-- Define o padrão de caracteres (acentos, ç, etc) -->
+
   <title>Células tela cheia</title>
+  <!-- Título que aparece na aba do navegador -->
 
   <style>
-    *{ margin:0; padding:0; box-sizing:border-box; }
+
+    *{
+    /* Seleciona TODOS os elementos da página */
+      margin:0;
+      /* Remove margens padrão */
+      padding:0;
+      /* Remove espaçamentos internos padrão */
+      box-sizing:border-box;
+      /* Faz largura/altura incluírem borda e padding */
+    }
 
     body{
+    /* Estilo do corpo da página */
       width: 100vw;
+      /* Largura igual à largura da tela */
       height: 100vh;
+      /* Altura igual à altura da tela */
       overflow: hidden;
+      /* Esconde barras de rolagem */
       background: #f2f2f200;
+      /* Cor de fundo transparente */
       font-family: Arial, sans-serif;
+      /* Define a fonte */
     }
 
     .area{
+    /* Container principal */
       width: 100vw;
+      /* Ocupa toda a largura da tela */
       height: 100vh;
+      /* Ocupa toda a altura da tela */
       display: grid;
+      /* Ativa o CSS Grid */
       grid-template-columns: 180px 1fr;
+      /* Duas colunas: uma fixa e uma flexível */
       grid-template-rows: 200px 1fr;
+      /* Duas linhas: uma fixa e uma flexível */
     }
-
 
     .celula{
+    /* Estilo base de cada célula */
       border: 1px solid rgba(0, 0, 0, 0);
+      /* Borda invisível */
       background: #f2f2f200;
+      /* Fundo transparente */
       overflow: hidden;
+      /* Esconde conteúdo que ultrapassar */
       display: flex;
+      /* Ativa flexbox */
       align-items: center;
+      /* Centraliza verticalmente */
       justify-content: center;
+      /* Centraliza horizontalmente */
     }
 
-    /* tirar bordas duplas */
-    .c1{ border-right:0; border-bottom:0; }
-    .c2{ padding-top:20px; }
-    .c3{ border-right:0; }
+    .c1{
+    /* Estilo específico da célula 1 */
+      border-right:0;
+      /* Remove borda direita */
+      border-bottom:0;
+      /* Remove borda inferior */
+    }
+
+    .c2{
+    /* Estilo específico da célula 2 */
+      padding-top:20px;
+      /* Espaço interno no topo */
+    }
+
+    .c3{
+    /* Estilo específico da célula 3 */
+      border-right:0;
+      /* Remove borda direita */
+    }
 
     .celula img,
+    /* Seleciona imagens dentro da célula */
     .celula video{
+    /* Seleciona vídeos dentro da célula */
       width: 100%;
+      /* Ocupa toda a largura */
       height: 100%;
+      /* Ocupa toda a altura */
       object-fit: cover;
+      /* Corta sem distorcer */
       display: block;
+      /* Remove espaços extras */
     }
 
-    /* lista na célula 3 */
     .lista{
+    /* Container da lista de botões */
       width: 100%;
+      /* Largura total */
       height: 100%;
+      /* Altura total */
       padding: 10px;
+      /* Espaçamento interno */
       overflow-y: auto;
+      /* Rolagem vertical */
       display: flex;
+      /* Flexbox */
       flex-direction: column;
+      /* Itens em coluna */
       gap: 8px;
+      /* Espaço entre botões */
       align-items: stretch;
+      /* Botões esticam na largura */
       justify-content: flex-start;
+      /* Alinha no topo */
     }
 
     .lista button{
+    /* Botões da lista */
       width: 100%;
+      /* Largura total */
       padding: 10px;
+      /* Espaço interno */
       border: 1px solid #00000000;
+      /* Borda invisível */
       background: rgba(255, 255, 255, 0);
+      /* Fundo transparente */
       cursor: pointer;
+      /* Cursor de clique */
       font-size: 14px;
+      /* Tamanho da fonte */
       text-align: left;
+      /* Texto alinhado à esquerda */
     }
 
     .lista button:hover{
+    /* Quando o mouse passa no botão */
       background: #dddddd00;
+      /* Cor de fundo (quase invisível) */
     }
 
-    /* wikipedia na célula 4 */
     iframe{
+    /* Todos os iframes */
       width: 100%;
+      /* Largura total */
       height: 100%;
+      /* Altura total */
       border: none;
+      /* Remove borda */
     }
+
   </style>
+  <!-- Fim do CSS -->
 </head>
+<!-- Fim do cabeçalho -->
 
 <body>
+<!-- Início do corpo -->
 
   <div class="area">
+  <!-- Grid principal -->
 
     <div class="celula c1">
+    <!-- Célula 1 -->
       <img src="L-logo.png" alt="meme">
+      <!-- Imagem exibida -->
     </div>
+    <!-- Fim da célula 1 -->
 
     <div class="celula c2">
-      <iframe data-testid="embed-iframe" 
-        style="border-radius:12px" 
-        src="https://open.spotify.com/embed/playlist/37i9dQZEVXbNG2KDcFcKOF?utm_source=generator&theme=0" 
-        width="100%" 
-        height="352" 
-        frameBorder="0" 
-        allowfullscreen="" 
-        allow=autoplay; 
-        clipboard-write; 
-        encrypted-media; 
-        fullscreen; 
-        picture-in-picture;
-        loading="lazy"></iframe>
+    <!-- Célula 2 -->
+      <iframe
+        src="https://open.spotify.com/embed/playlist/37i9dQZEVXbNG2KDcFcKOF"
+        loading="lazy">
+        <!-- Carrega só quando necessário -->
+      </iframe>
     </div>
+    <!-- Fim da célula 2 -->
 
-
-    <!-- CÉLULA 3: lista de pessoas -->
     <div class="celula c3">
-      <div class="lista" id="listaPessoas">
-        <button onclick="abrirWiki('Albert_Einstein')">Albert Einstein</button>
-        <button onclick="abrirWiki('Nikola_Tesla')">Nikola Tesla</button>
-        <button onclick="abrirWiki('Marie_Curie')">Marie Curie</button>
-        <button onclick="abrirWiki('Isaac_Newton')">Isaac Newton</button>
-        <button onclick="abrirWiki('Ada_Lovelace')">Ada Lovelace</button>
-        <button onclick="abrirWiki('Elon_Musk')">Elon Musk</button>
-        <button onclick="abrirWiki('Cristiano_Ronaldo')">Cristiano Ronaldo</button>
-        <button
-          onclick="window.open('https://forms.gle/GgxyrNvtRndYG2mk9', '_blank')"
-          style="
-            width:100%;
-            padding:15px;
-            font-size:18px;
-            background:#ff4444;
-            color:white;
-            border:none;
-            cursor:pointer;
-            margin-top:20px;
-          ">
-          Preciso de ajuda
+    <!-- Célula 3 -->
+      <div class="lista">
+      <!-- Lista de botões -->
+
+        <button onclick="abrirWiki('Albert_Einstein')">
+        <!-- Botão -->
+          Albert Einstein
+          <!-- Texto do botão -->
         </button>
 
+        <button onclick="abrirForms()">
+        <!-- Botão do forms -->
+          Fale com nosco
+          <!-- Texto -->
+        </button>
 
       </div>
+      <!-- Fim da lista -->
     </div>
+    <!-- Fim da célula 3 -->
 
-    <!-- CÉLULA 4: página wikipedia -->
     <div class="celula c4">
-      <iframe id="wikiFrame" src="https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal"></iframe>
+    <!-- Célula 4 -->
+      <iframe id="wikiFrame">
+      <!-- Iframe que recebe conteúdo -->
+      </iframe>
     </div>
+    <!-- Fim da célula 4 -->
 
   </div>
+  <!-- Fim da área -->
 
   <script>
-  function abrirWiki(nome){
-    const url = "https://pt.wikipedia.org/wiki/" + nome;
-    document.getElementById("wikiFrame").src = url;
-  }
+  <!-- Início do JavaScript -->
 
-  function abrirFormAjuda(){
-    window.open("form-ajuda.html", "_blank"); // abre em nova aba
-  }
-</script>
+    function abrirWiki(nome){
+    // Função que recebe o nome da página
+      document.getElementById("wikiFrame").src =
+      // Seleciona o iframe
+        "https://pt.wikipedia.org/wiki/" + nome;
+        // Define a URL
+    }
 
+    function abrirForms(){
+    // Função do botão "Fale com nosco"
+      document.getElementById("wikiFrame").src =
+      // Seleciona o iframe
+        "https://forms.gle/GgxyrNvtRndYG2mk9";
+        // Define o link do Forms
+    }
+
+  </script>
+  <!-- Fim do JavaScript -->
 
 </body>
+<!-- Fim do corpo -->
+
 </html>
+<!-- Fim do HTML -->
